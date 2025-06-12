@@ -16,7 +16,9 @@
     }
   ],
   "scripts": {
-    "nocobase": "nocobase",
+    "nocobase":"node --max-old-space-size=4096 ./node_modules/@nocobase/cli/bin/index.js",
+    "check-memory": "node -e \"console.log(require('v8').getHeapStatistics().heap_size_limit / 1024 / 1024 + ' MB')\"",
+    "check-memory-with-args": "node --max-old-space-size=4096 -e \"console.log('当前内存限制:', require('v8').getHeapStatistics().heap_size_limit / 1024 / 1024 + ' MB')\"",
     "pm": "nocobase pm",
     "pm2": "nocobase pm2",
     "dev": "nocobase dev",
